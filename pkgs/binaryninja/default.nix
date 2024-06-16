@@ -15,7 +15,7 @@
 , libxml2
 }:
 stdenv.mkDerivation {
-  name = "binaryninja-free";
+  name = "binaryninja";
   buildInputs = [
     unzip
     libGL
@@ -56,7 +56,7 @@ stdenv.mkDerivation {
   '';
 
   meta = with lib; {
-    description = "Binary Ninja is an interactive decompiler, disassembler, debugger, and binary analysis platform built by reverse engineers, for reverse engineers.";
+    description = "Binary Ninja is an interactive decompiler, disassembler, debugger, and binary analysis platform built by reverse engineers, for reverse engineers. (Free version)";
     homepage = "https://binary.ninja/";
     license = licenses.unfree;
     platforms = platforms.linux;

@@ -5,7 +5,10 @@
 , makeWrapper
 , lttng-ust_2_12
 , fontconfig
-, zlib }:
+, icu
+, zlib 
+, xorg
+, openssl }:
 stdenv.mkDerivation rec {
   name = "CodemerxDecompile";
 
@@ -21,7 +24,20 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib # libstdc++.so.6
     fontconfig
     lttng-ust_2_12 # liblttng-ust.so.0
+    icu
     zlib
+    xorg.libX11
+    xorg.libICE
+    xorg.libSM
+    openssl
+  ];
+
+  runtimeDependencies = [
+    icu
+    xorg.libX11
+    xorg.libICE
+    xorg.libSM
+    openssl
   ];
 
   nativeBuildInputs = [
@@ -29,13 +45,16 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  installPhase = ''
+  installPhase = let 
+    libPath = lib.makeLibraryPath runtimeDependencies;
+  in ''
     mkdir -p $out/opt/codemerxdecompile
     cp -r * $out/opt/codemerxdecompile
     ls $out/opt/codemerxdecompile
     chmod +x $out/opt/codemerxdecompile/CodemerxDecompile
     makeWrapper $out/opt/codemerxdecompile/CodemerxDecompile \
-      $out/bin/CodemerxDecompile
+      $out/bin/CodemerxDecompile \
+      --prefix LD_LIBRARY_PATH ":" "${libPath}"
   '';
 
   meta = with lib; {

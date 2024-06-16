@@ -10,10 +10,11 @@
 , xorg
 , openssl }:
 stdenv.mkDerivation rec {
-  name = "CodemerxDecompile";
+  pname = "CodemerxDecompile";
+  version = "1.4.0";
 
   src = fetchurl {
-    url = meta.downloadPage;
+    url = "https://github.com/codemerx/${pname}/releases/download/${version}/CodemerxDecompile-linux-x64.tar.gz";
     sha256 = "1f6kjb0il4b15n0dk6b74xw0hly4y8a5wy472jhrg1ap8rbg1x8k";
   };
 
@@ -58,9 +59,6 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-  # https://github.com/codemerx/CodemerxDecompile/releases/download/1.4.0/CodemerxDecompile-linux-x64.tar.gz
-    version = "1.4.0";
-    downloadPage = "https://github.com/codemerx/CodemerxDecompile/releases/download/${version}/CodemerxDecompile-linux-x64.tar.gz";
     description = "The first standalone .NET decompiler for Mac, Linux and Windows.";
     homepage = "https://decompiler.codemerx.com/";
     license = licenses.agpl3Plus;

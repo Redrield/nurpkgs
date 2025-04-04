@@ -7,6 +7,7 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
+  atlauncher = pkgs.callPackage ./pkgs/gaming/atlauncher-bin { };
   binaryninja = pkgs.callPackage ./pkgs/re/binaryninja { };
   codemerxdecompile = pkgs.callPackage ./pkgs/re/codemerxdecompile { };
   detectiteasy = pkgs.libsForQt5.callPackage ./pkgs/re/detectiteasy { };
@@ -15,6 +16,7 @@
   elf2uf2-rs = pkgs.callPackage ./pkgs/tooling/elf2uf2-rs { };
   probe-rs-tools = pkgs.callPackage ./pkgs/tooling/probe-rs-tools { };
   mayo = pkgs.libsForQt5.callPackage ./pkgs/mayo { };
+  waterfox = pkgs.callPackage ./pkgs/waterfox.nix { };
 
   ltsatool = pkgs.callPackage ./pkgs/school/ltsatool { };
 

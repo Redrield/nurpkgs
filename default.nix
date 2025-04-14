@@ -12,7 +12,6 @@
   codemerxdecompile = pkgs.callPackage ./pkgs/re/codemerxdecompile { };
   detectiteasy = pkgs.libsForQt5.callPackage ./pkgs/re/detectiteasy { };
   depotdownloader = pkgs.callPackage ./pkgs/gaming/depotdownloader { };
-  probe-rs-tools = pkgs.callPackage ./pkgs/tooling/probe-rs-tools { };
   mayo = pkgs.libsForQt5.callPackage ./pkgs/mayo { };
 
   flog-symbols-ttf = pkgs.callPackage ./pkgs/fonts/flog-symbols.nix { };
